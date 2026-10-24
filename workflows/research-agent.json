@@ -1,0 +1,111 @@
+{
+  "name": "Local AI Research Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [0, 0],
+      "id": "REPLACE_WITH_NEW_CHAT_TRIGGER_ID",
+      "name": "When chat message received",
+      "webhookId": "REPLACE_WITH_NEW_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an AI Research Assistant. Answer the user's questions clearly and accurately. When a calculation is needed, use the Calculator tool rather than calculating mentally. Explain the result briefly. Never invent facts or pretend you used a tool when you did not."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [384, 0],
+      "id": "REPLACE_WITH_NEW_AGENT_ID",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "qwen3:4b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [256, 208],
+      "id": "REPLACE_WITH_NEW_MODEL_ID",
+      "name": "Ollama Chat Model"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [528, 208],
+      "id": "REPLACE_WITH_NEW_CALCULATOR_ID",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [656, 208],
+      "id": "REPLACE_WITH_NEW_WIKIPEDIA_ID",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "REPLACE_WITH_NEW_VERSION_ID",
+  "nodeGroups": [],
+  "id": "REPLACE_WITH_NEW_WORKFLOW_ID",
+  "tags": []
+}
