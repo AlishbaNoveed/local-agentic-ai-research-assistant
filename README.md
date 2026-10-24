@@ -16,7 +16,7 @@ Unlike a basic chatbot that only generates text, this project uses an AI Agent n
 
 ## Workflow
 
-![Local AI Research Assistant workflow](screenshots/Agent Image 1.jpeg)
+![Local AI Research Assistant workflow](<screenshots/Agent Image 1.jpeg>)
 
 The chat trigger receives a message and passes it to the AI Agent. The agent uses the local language model and can call the Calculator or Wikipedia tool when needed.
 
